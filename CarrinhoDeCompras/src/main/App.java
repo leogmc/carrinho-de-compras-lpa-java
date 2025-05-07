@@ -7,7 +7,7 @@ public class App {
 	public static void main(String[] args) {
 		
 		Scanner leia = new Scanner(System.in);
-		Catalogo catalogo = new Catalogo();
+		Carrinho carrinho = new Carrinho();
 		
 		int opcao;
 		 
@@ -30,11 +30,12 @@ public class App {
 			switch (opcao) {
 			
 				case 1:
-					catalogo.ExibeCatalogo();
+					Catalogo.exibeCatalogo();
 					break;
 					
 					
 				case 2:
+					carrinho.adicionaItemNoCarrinho();
 					break;
 					
 					
