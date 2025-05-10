@@ -40,6 +40,7 @@ public class App {
 					
 					
 				case 3:
+					carrinho.exibeCarrinho();
 					break;
 					
 				case 4:
