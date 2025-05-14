@@ -44,6 +44,7 @@ public class App {
 					break;
 					
 				case 4:
+					carrinho.finalizaCompra();
 					break;
 					
 				case 0:
