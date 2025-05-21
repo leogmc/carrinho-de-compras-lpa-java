@@ -13,15 +13,16 @@ public class App {
 		 
 		do {
 			
-			System.out.println(" --------------------------");
-			System.out.println("|    Atakadão Atakarejo    |");
-			System.out.println(" --------------------------");
+			System.out.println(" ====================================");
+			System.out.println("||    	 ATAKADÃO ATAKAREJO        ||");
+			System.out.println(" ====================================");
 			System.out.println("");
-			System.out.println("Seja bem-vindo! \nO que deseja fazer?\n");
+			System.out.println("Seja bem-vindo! O que deseja fazer?\n");
 			System.out.println("[1] - Visualizar catálogo");
 			System.out.println("[2] - Adicionar itens ao carrinho");
 			System.out.println("[3] - Exibir carrinho de compras");
 			System.out.println("[4] - Finalizar compra e exibir o total geral");
+			System.out.println("[5] - Remover item do carrinho");			
 			System.out.println("[0] - Sair");
 			System.out.println("Escolha uma opção: ");
 			opcao = leia.nextInt();
@@ -46,6 +47,9 @@ public class App {
 				case 4:
 					carrinho.finalizaCompra();
 					break;
+					
+				case 5:
+					carrinho.removeItemCarrinho();
 					
 				case 0:
 					System.out.println("Programa finalizado.");

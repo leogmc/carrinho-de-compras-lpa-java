@@ -6,7 +6,7 @@ public class Carrinho {
 	
 	// Atributos
 	
-	private Item[] itens = new Item[10];
+	private Item[] itens = new Item[1];
 
 	
 	// Getters e Setters
@@ -78,6 +78,7 @@ public class Carrinho {
 			}
 		
 			System.out.println("Item adicionado ao carrinho com sucesso!");
+			System.out.println(" ");
 		
 		
 	}
@@ -86,12 +87,45 @@ public class Carrinho {
 
 		Item[] carrinho = getItens();
 			
-		System.out.println("--------------- CARRINHO ----------------");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("|            	         SEU CARRINHO DE COMPRAS      		           |");
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("Item			Quantidade	   Preço (R$)	  Total (R$)");
+		System.out.println("----------------------------------------------------------------------------");
 		
 		for(int i = 0; i < carrinho.length; i++) {
 			if(carrinho[i] != null)
-			System.out.println(carrinho[i]);
+				System.out.println(i +" - " + carrinho[i].getDescricao() + "			" + carrinho[i].getQuantidade() + "	        " + carrinho[i].getValor() + "		" + carrinho[i].getValorTotal());
 		}
+		
+		System.out.println(" ");
+		
+	}
+	
+	public void removeItemCarrinho() {
+		
+		Scanner leia = new Scanner(System.in);
+		
+		Item[] carrinhoAnterior = getItens();
+		Item[] carrinhoNovo = new Item[carrinhoAnterior.length -1];
+		int indice;
+		
+		exibeCarrinho();
+		
+		System.out.println("Informe qual item você deseja remover: ");
+		indice = leia.nextInt();
+		
+		for (int i = 0; i < indice; i++) {
+			carrinhoNovo[i] = carrinhoAnterior[i];
+		}
+		
+		for (int i = indice; indice < carrinhoAnterior.length; i++) {
+			carrinhoNovo[i - 1] = carrinhoAnterior[i];	
+		}
+		
+		setItens(carrinhoNovo);
+		
+		System.out.println("Item removido com sucesso!");
 		
 	}
 	

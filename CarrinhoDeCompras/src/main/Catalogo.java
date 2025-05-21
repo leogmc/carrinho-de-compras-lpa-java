@@ -41,13 +41,20 @@ public class Catalogo {
 		catalogoPredefinido[2][0] = item3;
 		catalogoPredefinido[3][0] = item4;
 		
+		System.out.println("--------------------------------------------------------");
+		System.out.println("|            CATÁLOGO DE ITENS DO MERCADO      		|");
+		System.out.println("--------------------------------------------------------");
+		System.out.println("Item			Quantidade	   Preço (R$)");
+		System.out.println("--------------------------------------------------------");
 		
 		
 		for(int i = 0; i < catalogoPredefinido.length; i++) {
 			
-			System.out.println(i+1 +" - " + catalogoPredefinido[i][0]);
+			System.out.println(i+1 +" - " + catalogoPredefinido[i][0].getDescricao() + "			" + catalogoPredefinido[i][0].getQuantidade() + "	   " + catalogoPredefinido[i][0].getValor());
 			
 		}
+		
+		System.out.println(" ");
 		
 		return catalogoPredefinido;
 		
