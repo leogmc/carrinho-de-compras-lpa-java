@@ -3,63 +3,45 @@ package main;
 public class Catalogo {
 	
 	// Atributos
-	
-	private Item[][] itens;
+	private static Item[][] itens;
 
-	
 	// Getters e Setters
-	
 	public Item[][] getItens() {
 		return itens;
 	}
 
 	public void setItens(Item[][] itens) {
-		this.itens = itens;
+		Catalogo.itens = itens;
 	}
-	
+
 	// Métodos
-	
 	public static Item[][] exibeCatalogo() {
-		
-		Item item1 = new Item("Arroz", 10, 5.0);
-		Item item2 = new Item("Feijão", 10, 8.0);
-		Item item3 = new Item("Macarrão", 10, 4.50);
-		Item item4 = new Item("Açucar", 10, 3.80);
-		
-//		String[][] catalogoPredefinido = new String[4][1];
-//		
-//		catalogoPredefinido[0][0] = item1.getDescricao() + ": R$ " +  Double.toString(item1.getValor());
-//		catalogoPredefinido[1][0] = item2.getDescricao() + ": R$ " +  Double.toString(item2.getValor());
-//		catalogoPredefinido[2][0] = item3.getDescricao() + ": R$ " +  Double.toString(item3.getValor());
-//		catalogoPredefinido[3][0] = item4.getDescricao() + ": R$ " +  Double.toString(item4.getValor());
-		
-		
-		Item[][] catalogoPredefinido = new Item[4][1];
-		
-		catalogoPredefinido[0][0] = item1;
-		catalogoPredefinido[1][0] = item2;
-		catalogoPredefinido[2][0] = item3;
-		catalogoPredefinido[3][0] = item4;
-		
+		// Inicializa o catálogo apenas uma vez
+		if (itens == null) {
+			Item item1 = new Item("Arroz", 10, 5.0);
+			Item item2 = new Item("Feijão", 10, 8.0);
+			Item item3 = new Item("Macarrão", 10, 2.50);
+			Item item4 = new Item("Açúcar", 10, 4.0);
+
+			itens = new Item[4][1];
+			itens[0][0] = item1;
+			itens[1][0] = item2;
+			itens[2][0] = item3;
+			itens[3][0] = item4;
+		}
+
 		System.out.println("--------------------------------------------------------");
 		System.out.println("|            CATÁLOGO DE ITENS DO MERCADO      		|");
 		System.out.println("--------------------------------------------------------");
-		System.out.println("Item			Quantidade	   Preço (R$)");
+		System.out.println("Item\t\tQuantidade\tPreço (R$)");
 		System.out.println("--------------------------------------------------------");
-		
-		
-		for(int i = 0; i < catalogoPredefinido.length; i++) {
-			
-			System.out.println(i+1 +" - " + catalogoPredefinido[i][0].getDescricao() + "			" + catalogoPredefinido[i][0].getQuantidade() + "	   " + catalogoPredefinido[i][0].getValor());
-			
-		}
-		
-		System.out.println(" ");
-		
-		return catalogoPredefinido;
-		
-		
-		
-	}
 
+		for (int i = 0; i < itens.length; i++) {
+			Item item = itens[i][0];
+			System.out.println((i + 1) + " - " + item.getDescricao() + "\t\t" + item.getQuantidade() + "\t\t" + item.getValor());
+		}
+
+		System.out.println(" ");
+		return itens;
+	}
 }

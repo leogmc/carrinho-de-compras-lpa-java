@@ -45,6 +45,7 @@ public class Item {
 		return "Item [descricao=" + descricao + ", quantidade=" + quantidade + ", valor=" + valor + ", valorTotal="
 				+ valorTotal + "]";
 	}
+	
 	public Item(String descricao, int quantidade, double valor, double valorTotal) {
 		super();
 		this.descricao = descricao;

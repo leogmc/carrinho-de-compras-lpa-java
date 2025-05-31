@@ -11,6 +11,8 @@ public class App {
 		
 		int opcao;
 		 
+		
+		// "do significa faça"
 		do {
 			
 			System.out.println(" ====================================");
@@ -50,6 +52,7 @@ public class App {
 					
 				case 5:
 					carrinho.removeItemCarrinho();
+					break;
 					
 				case 0:
 					System.out.println("Programa finalizado.");
@@ -59,6 +62,7 @@ public class App {
 				System.out.println("Opção inválida. Por favor, informe uma opção existente.");
 			}
 		
+			//"while" enquanto
 		} while (opcao!=0);
 		
 		leia.close();
