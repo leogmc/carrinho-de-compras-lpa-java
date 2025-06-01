@@ -40,11 +40,14 @@ public class Item {
 	
 	// Construtores
 	
+	//Override significa Sobrescrever
+	
 	@Override
 	public String toString() {
 		return "Item [descricao=" + descricao + ", quantidade=" + quantidade + ", valor=" + valor + ", valorTotal="
 				+ valorTotal + "]";
 	}
+	
 	
 	public Item(String descricao, int quantidade, double valor, double valorTotal) {
 		super();
@@ -61,6 +64,4 @@ public class Item {
 		this.valor = valor;
 	}
 	
-	
-
 }

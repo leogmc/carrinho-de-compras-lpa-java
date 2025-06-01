@@ -2,19 +2,17 @@ package main;
 
 import java.util.Scanner;
 
+//Classe principal
 public class App {
 
 	public static void main(String[] args) {
 		
 		Scanner leia = new Scanner(System.in);
-		Carrinho carrinho = new Carrinho();
+		Carrinho carrinho = new Carrinho();	
 		
 		int opcao;
-		 
-		
-		// "do significa faça"
-		do {
-			
+
+		do {		
 			System.out.println(" ====================================");
 			System.out.println("||    	 ATAKADÃO ATAKAREJO        ||");
 			System.out.println(" ====================================");
@@ -28,20 +26,17 @@ public class App {
 			System.out.println("[0] - Sair");
 			System.out.println("Escolha uma opção: ");
 			opcao = leia.nextInt();
-			
-			
+					
 			switch (opcao) {
 			
 				case 1:
 					Catalogo.exibeCatalogo();
 					break;
 					
-					
 				case 2:
 					carrinho.adicionaItemNoCarrinho();
 					break;
-					
-					
+									
 				case 3:
 					carrinho.exibeCarrinho();
 					break;
@@ -62,11 +57,11 @@ public class App {
 				System.out.println("Opção inválida. Por favor, informe uma opção existente.");
 			}
 		
-			//"while" enquanto
 		} while (opcao!=0);
 		
-		leia.close();
 		return;
+
+
 	}
 
 }

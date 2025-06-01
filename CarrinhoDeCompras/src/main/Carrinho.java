@@ -4,13 +4,11 @@ import java.util.Scanner;
 
 public class Carrinho {
 	
-	// Atributos
-	
+	// Atributos	
 	private Item[] itens = new Item[1];
 
 	
-	// Getters e Setters
-	
+	// Getters e Setters	
 	public Item[] getItens() {
 		return itens;
 	}
@@ -19,71 +17,73 @@ public class Carrinho {
 		this.itens = itens;
 	}
 	
-	// Métodos
 	
+	// Métodos
 	public void adicionaItemNoCarrinho() {
 
 	    Scanner leia = new Scanner(System.in);
 	    boolean sair = false;
 	    Item[] carrinhoAnterior = getItens();
-
-	    while (!sair) {
-	        Item[][] catalogo = Catalogo.exibeCatalogo();
-
-	        System.out.println("Informe o número do item desejado: ");
-	        int indiceDoItem = leia.nextInt();
-
-	        if (indiceDoItem <= 0 || indiceDoItem > catalogo.length) {
-	            System.out.println("Item inválido.");
-	            continue;
-	        }
-
-	        Item itemEscolhido = catalogo[indiceDoItem - 1][0];
-
-	        System.out.println("Informe a quantidade: ");
-	        int quantidade = leia.nextInt();
-
-	        // Verifica se há estoque suficiente
-	        if (quantidade > itemEscolhido.getQuantidade()) {
-	            System.out.println("Quantidade maior que o estoque disponível.\n");
-	            continue;
-	        }
-
-	        double totalItem = quantidade * itemEscolhido.getValor();
-
-	        // Atualiza o estoque no catálogo
-	        itemEscolhido.setQuantidade(itemEscolhido.getQuantidade() - quantidade);
-
-	        itemEscolhido.setValorTotal(totalItem);
-
-	        // Cria um novo item para o carrinho
-	        Item novoItem = new Item(itemEscolhido.getDescricao(), quantidade, itemEscolhido.getValor(), totalItem);
-
-	        if (carrinhoAnterior.length >= 20) {
-	            System.out.println("O carrinho só pode ter até no máximo 20 itens!");
-	            return;
-	        }
-
-	        Item[] novoCarrinho = new Item[carrinhoAnterior.length + 1];
-	        for (int i = 0; i < carrinhoAnterior.length; i++) {
-	            novoCarrinho[i] = carrinhoAnterior[i];
-	        }
-	        novoCarrinho[carrinhoAnterior.length] = novoItem;
-
-	        setItens(novoCarrinho);
-	        carrinhoAnterior = novoCarrinho;
-
-	        System.out.println("Item adicionado ao carrinho com sucesso!\n");
-
-	        System.out.println("Deseja adicionar outro item? \n[1] - Sim \n[0] - Não");
-	        int decisao = leia.nextInt();
-	        sair = (decisao == 0);
-	    }
+	        
+		    while (!sair) {
+		    		    	
+		        Item[][] catalogo = Catalogo.exibeCatalogo();
+	
+		        System.out.println("Informe o número do item desejado: ");
+		        int indiceDoItem = leia.nextInt();
+	
+		        if (indiceDoItem <= 0 || indiceDoItem > catalogo.length) {
+		            System.out.println("Item inválido.");
+		        }
+	
+		        Item itemEscolhido = catalogo[indiceDoItem - 1][0];
+	
+		        System.out.println("Informe a quantidade: ");
+		        int quantidade = leia.nextInt();
+	
+		        // Verifica se há estoque suficiente
+		        if (quantidade > itemEscolhido.getQuantidade()) {
+		            System.out.println("Quantidade maior que o estoque disponível.\n");
+		        }
+	
+		        double totalItem = quantidade * itemEscolhido.getValor();
+	
+		        // Atualiza o estoque no catálogo
+		        itemEscolhido.setQuantidade(itemEscolhido.getQuantidade() - quantidade);
+	
+		        itemEscolhido.setValorTotal(totalItem);
+	
+		        // Cria um novo item para o carrinho
+		        Item novoItem = new Item(itemEscolhido.getDescricao(), quantidade, itemEscolhido.getValor(), totalItem);
+	
+		        if (carrinhoAnterior.length >= 20) {
+		            System.out.println("O carrinho só pode ter até no máximo 20 itens!");
+		            return;
+		        }
+	
+		        Item[] novoCarrinho = new Item[carrinhoAnterior.length + 1];
+		        
+		        // Fazendo cópia da lista anterior para a lista nova
+		        for (int i = 0; i < carrinhoAnterior.length; i++) {
+		            novoCarrinho[i] = carrinhoAnterior[i];
+		        }
+		        
+		        novoCarrinho[carrinhoAnterior.length] = novoItem;
+	
+		        setItens(novoCarrinho);
+		        carrinhoAnterior = novoCarrinho;
+	
+		        System.out.println("Item adicionado ao carrinho com sucesso!\n");
+	
+		        System.out.println("Deseja adicionar outro item? \n[1] - Sim \n[0] - Não");
+		        int decisao = leia.nextInt();
+		        sair = (decisao == 0);
+		        
+		    }
 
 	    System.out.println("\nFinalizando adição de itens ao carrinho.\n");
+	      
 	}
-
-
 
 	public void exibeCarrinho() {
 
@@ -108,9 +108,9 @@ public class Carrinho {
 	    Scanner leia = new Scanner(System.in);
 	    
 	    Item[] carrinhoAnterior = getItens();
-
+	    
 	    exibeCarrinho();
-
+	    
 	    System.out.println("Informe o índice do item que deseja remover: ");
 	    int indice = leia.nextInt();
 
@@ -134,10 +134,11 @@ public class Carrinho {
 
 	    setItens(carrinhoNovo);
 
+	    
 	    System.out.println("Item removido com sucesso!");
+	    
 	}
 
-	
 	public void finalizaCompra() {
 		Scanner leia = new Scanner(System.in);
 		Item[] carrinho = getItens();
@@ -183,6 +184,7 @@ public class Carrinho {
 	    double valorComDesconto = valorTotalCarrinho - (valorTotalCarrinho * desconto);
 
 	    System.out.println(" ");
+	    
 	    if (desconto > 0) {
 	        System.out.printf("Desconto aplicado: %.0f%%\n", desconto * 100);
 	        System.out.printf("TOTAL COM DESCONTO: R$%.2f\n", valorComDesconto);
@@ -190,5 +192,7 @@ public class Carrinho {
 	        System.out.printf("TOTAL: R$%.2f\n", valorTotalCarrinho);
 	    }
 	    System.out.println("Compra finalizada. Obrigado por comprar conosco!\n");
+
 	}
+	
 }

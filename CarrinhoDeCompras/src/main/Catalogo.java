@@ -15,7 +15,9 @@ public class Catalogo {
 	}
 
 	// Métodos
+	
 	public static Item[][] exibeCatalogo() {
+		
 		// Inicializa o catálogo apenas uma vez
 		if (itens == null) {
 			Item item1 = new Item("Arroz", 10, 5.0);
